@@ -37,8 +37,34 @@ RUN apt-get update \
     && apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/library-scripts/
 # install bsdtar (for vagrant) and ansible 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-add-repository --yes --update ppa:ansible/ansible \
-    && apt-get install -y bsdtar software-properties-common ansible="${ANSIBLE_V}"
+    && apt-get install -y --no-install-recommends \
+      apt-utils \
+      bsdtar \
+      build-essential \
+      locales \
+      libffi-dev \
+      libssl-dev \
+      libyaml-dev \
+      python3-dev \
+      python3-setuptools \
+      python3-pip \
+      python3-yaml \
+      software-properties-common \
+      rsyslog systemd systemd-cron sudo iproute2 \
+    && rm -Rf /var/lib/apt/lists/* \
+    && rm -Rf /usr/share/doc && rm -Rf /usr/share/man \
+    && apt-get clean
+RUN sed -i 's/^\($ModLoad imklog\)/#\1/' /etc/rsyslog.conf
+
+# Fix potential UTF-8 errors with ansible-test.
+RUN locale-gen en_US.UTF-8
+
+# Install Ansible via Pip.
+RUN pip3 install "ansible==${ANSIBLE_V}"
+
+# Install Ansible inventory file.
+RUN mkdir -p /etc/ansible
+RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
 
 # [Optional] Uncomment this line to install additional gems.
 RUN rm /usr/local/lib/ruby/gems/2.7.0/specifications/default/bundler-2.1.4.gemspec \
