@@ -22,9 +22,9 @@ I have included ansible in the dev env but it hasnt been added to vagrant (the i
 
 ### links
 
-remote-containers - https://code.visualstudio.com/docs/remote/containers-tutorial
-ansible - https://docs.ansible.com/ansible/latest/index.html
-cinc-auditor- https://cinc.sh/start/auditor/
-inspec - https://docs.chef.io/inspec/profiles/
-vagrant - https://www.vagrantup.com
-vagrant-managed-ssh - https://github.com/tknerr/vagrant-managed-servers
+remote-containers - https://code.visualstudio.com/docs/remote/ <br> containers-tutorial - https://code.visualstudio.com/docs/remote/containers-tutorial <br>
+ansible - https://docs.ansible.com/ansible/latest/index.html <br>
+cinc-auditor- https://cinc.sh/start/auditor/ <br>
+inspec - https://docs.chef.io/inspec/profiles/ <br>
+vagrant - https://www.vagrantup.com <br>
+vagrant-managed-ssh - https://github.com/tknerr/vagrant-managed-servers <br>
