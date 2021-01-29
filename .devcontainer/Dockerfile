@@ -11,7 +11,7 @@ ARG VAGRANT="2.2.14"
 # pin vagrant-managed-servers
 ARG V_SSH_PLUG="0.8.0"
 #  pin ansible
-ARG ANSIBLE_V="2.10.0"
+ARG ANSIBLE_V="2.10.5"
 # pin cinc-auditor
 ARG CINC_V="4.26.4"
 # [Option] Install zsh
